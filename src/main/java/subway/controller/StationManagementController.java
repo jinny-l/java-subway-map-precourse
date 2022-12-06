@@ -38,6 +38,7 @@ public class StationManagementController {
             StationRepository.addStation(station);
         } catch (IllegalArgumentException ie) {
             OutputView.printError(ie.getMessage());
+            registerStation();
         }
     }
 
@@ -46,6 +47,7 @@ public class StationManagementController {
             StationRepository.deleteStation(inputView.readStationToDelete());
         } catch (IllegalArgumentException ie) {
             OutputView.printError(ie.getMessage());
+            deleteStation();
         }
     }
 
