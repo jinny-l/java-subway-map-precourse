@@ -1,9 +1,11 @@
 package subway.domain;
 
 public class Station {
-    private String name;
+
+    private final String name;
 
     public Station(String name) {
+        validate(name);
         this.name = name;
     }
 
@@ -11,5 +13,10 @@ public class Station {
         return name;
     }
 
-    // 추가 기능 구현
+    public void validate(String name) {
+        if (StationRepository.contains(name)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
