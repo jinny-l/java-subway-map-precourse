@@ -5,7 +5,7 @@ public enum StationManagementCommand {
     STATION_REGISTRATION("역 등록", "1"),
     STATION_DELETION("역 삭제", "2"),
     VIEW_STATION("역 조회", "3"),
-    BACK("돌아가기", "Q");
+    BACK("돌아가기", "B");
 
     private static final String FIELD_DELIMITER = ". ";
 
