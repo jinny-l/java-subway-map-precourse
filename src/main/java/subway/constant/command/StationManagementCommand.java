@@ -1,4 +1,4 @@
-package subway.constant;
+package subway.constant.command;
 
 public enum StationManagementCommand {
 
