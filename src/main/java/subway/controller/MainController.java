@@ -9,11 +9,8 @@ import subway.view.OutputView;
 
 public class MainController {
 
-    private static final String BACK = StationManagementCommand.BACK.getCommand();
-
     private final InputView inputView;
-
-    Service service;
+    private Service service;
 
     public MainController(Scanner scanner) {
         inputView = new InputView(scanner);
@@ -21,11 +18,15 @@ public class MainController {
 
     public void run() {
         initialize();
+        executeCommand();
+    }
+
+    private void executeCommand() {
         String mainCommand = readMainCommand();
         if (mainCommand.equals(MainCommand.QUIT.getCommand())) {
             return;
         }
-        executeCommand(mainCommand);
+        executeMainCommand(mainCommand);
     }
 
     private void initialize() {
@@ -42,10 +43,10 @@ public class MainController {
         }
     }
 
-    private void executeCommand(String mainCommand) {
+    private void executeMainCommand(String mainCommand) {
         if (mainCommand.equals(MainCommand.STATION_MANAGEMENT.getCommand())) {
             manageStation();
-            run();
+            executeCommand();
         }
 
     }
