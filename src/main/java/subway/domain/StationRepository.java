@@ -13,20 +13,19 @@ public class StationRepository {
     }
 
     public static boolean contains(String name) {
-        if (stations.stream()
-                .filter(station -> station.getName().equals(name))
-                .count() > 0) {
-            return true;
-        }
-        return false;
+        return stations.stream()
+                .anyMatch(station -> station.getName().equals(name));
     }
 
     public static void addStation(Station station) {
         stations.add(station);
     }
 
-    public static boolean deleteStation(String name) {
-        return stations.removeIf(station -> Objects.equals(station.getName(), name));
+    public static void deleteStation(String name) {
+        if (!contains(name)) {
+            throw new IllegalArgumentException();
+        }
+        stations.removeIf(station -> Objects.equals(station.getName(), name));
     }
 
     public static void reset() {
