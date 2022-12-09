@@ -5,6 +5,8 @@ import subway.constant.command.EdgeCommand;
 import subway.constant.command.LineCommand;
 import subway.constant.command.MainCommand;
 import subway.constant.command.StationCommand;
+import subway.domain.Line;
+import subway.domain.LineRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 
@@ -31,22 +33,6 @@ public class OutputView {
         System.out.printf("%n%s역 관리 화면%n%s%n", OUTPUT_VIEW_PREFIX, stringBuilder);
     }
 
-    public static void printRegisteredInfo(String object) {
-        System.out.printf("%n%s지하철 %s이 등록되었습니다.%n%n", INFORMATION_PREFIX, object);
-    }
-
-    public static void printDeletedInfo(String object) {
-        System.out.printf("%n%s지하철 %s이 삭제되었습니다.%n%n", INFORMATION_PREFIX, object);
-    }
-
-    public static void printStations() {
-        System.out.printf("%n%s 역 목록%n", OUTPUT_VIEW_PREFIX);
-        StationRepository.stations().stream()
-                .map(Station::getName)
-                .forEach(name -> System.out.println(INFORMATION_PREFIX + name));
-        System.out.println();
-    }
-
     public static void printLineCommand() {
         StringBuilder stringBuilder = new StringBuilder();
         Stream.of(LineCommand.values())
@@ -59,6 +45,31 @@ public class OutputView {
         Stream.of(EdgeCommand.values())
                 .forEach(edgeCommand -> stringBuilder.append(edgeCommand.toString()));
         System.out.printf("%n%s구간 관리 화면%n%s%n", OUTPUT_VIEW_PREFIX, stringBuilder);
+    }
+
+    public static void printRegisteredInfo(String object) {
+        System.out.printf("%n%s지하철 %s이 등록되었습니다.%n%n", INFORMATION_PREFIX, object);
+    }
+
+    public static void printDeletedInfo(String object) {
+        System.out.printf("%n%s지하철 %s이 삭제되었습니다.%n%n", INFORMATION_PREFIX, object);
+    }
+
+    public static void printStations() {
+        System.out.printf("%n%s역 목록%n", OUTPUT_VIEW_PREFIX);
+        StationRepository.stations().stream()
+                .map(Station::getName)
+                .forEach(name -> System.out.println(INFORMATION_PREFIX + name));
+        System.out.println();
+    }
+
+    public static void printLines() {
+        System.out.printf("%n%s노선 목록%n", OUTPUT_VIEW_PREFIX);
+        LineRepository.lines().stream()
+                .map(Line::getName)
+                .distinct()
+                .forEach(name -> System.out.println(INFORMATION_PREFIX + name));
+        System.out.println();
     }
 
 }
