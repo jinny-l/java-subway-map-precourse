@@ -1,6 +1,7 @@
 package subway.view;
 
 import java.util.stream.Stream;
+import subway.constant.command.EdgeCommand;
 import subway.constant.command.LineCommand;
 import subway.constant.command.MainCommand;
 import subway.constant.command.StationCommand;
@@ -52,4 +53,12 @@ public class OutputView {
                 .forEach(lineCommand -> stringBuilder.append(lineCommand.toString()));
         System.out.printf("%n%s노선 관리 화면%n%s%n", OUTPUT_VIEW_PREFIX, stringBuilder);
     }
+
+    public static void printEdgeCommand() {
+        StringBuilder stringBuilder = new StringBuilder();
+        Stream.of(EdgeCommand.values())
+                .forEach(edgeCommand -> stringBuilder.append(edgeCommand.toString()));
+        System.out.printf("%n%s구간 관리 화면%n%s%n", OUTPUT_VIEW_PREFIX, stringBuilder);
+    }
+
 }
