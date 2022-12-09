@@ -3,6 +3,8 @@ package subway.view;
 import java.util.stream.Stream;
 import subway.constant.command.MainCommand;
 import subway.constant.command.StationCommand;
+import subway.domain.Station;
+import subway.domain.StationRepository;
 
 public class OutputView {
 
@@ -31,4 +33,10 @@ public class OutputView {
         System.out.printf("%s%s이 삭제되었습니다.%n", INFORMATION_PREFIX, object);
     }
 
+    public static void printStations() {
+        StationRepository.stations().stream()
+                .map(Station::getName)
+                .forEach(name -> System.out.println(INFORMATION_PREFIX + name));
+        System.out.println();
+    }
 }
