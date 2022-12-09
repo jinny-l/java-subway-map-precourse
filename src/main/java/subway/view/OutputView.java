@@ -1,6 +1,7 @@
 package subway.view;
 
 import java.util.stream.Stream;
+import subway.constant.command.LineCommand;
 import subway.constant.command.MainCommand;
 import subway.constant.command.StationCommand;
 import subway.domain.Station;
@@ -43,5 +44,12 @@ public class OutputView {
                 .map(Station::getName)
                 .forEach(name -> System.out.println(INFORMATION_PREFIX + name));
         System.out.println();
+    }
+
+    public static void printLineCommand() {
+        StringBuilder stringBuilder = new StringBuilder();
+        Stream.of(LineCommand.values())
+                .forEach(lineCommand -> stringBuilder.append(lineCommand.toString()));
+        System.out.printf("%n%s노선 관리 화면%n%s%n", OUTPUT_VIEW_PREFIX, stringBuilder);
     }
 }
