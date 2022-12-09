@@ -2,6 +2,7 @@ package subway.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Line {
 
@@ -15,6 +16,12 @@ public class Line {
 
     public String getName() {
         return name;
+    }
+
+    public List<String> getStationsName() {
+        return stations.stream()
+                .map(Station::getName)
+                .collect(Collectors.toList());
     }
 
 }

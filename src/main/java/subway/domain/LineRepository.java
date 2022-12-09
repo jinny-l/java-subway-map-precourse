@@ -12,6 +12,11 @@ public class LineRepository {
         return Collections.unmodifiableList(lines);
     }
 
+    public static boolean containStation(String name) {
+        return lines.stream()
+                .anyMatch(line -> line.getStationsName().contains(name));
+    }
+
     public static void addLine(Line line) {
         lines.add(line);
     }
