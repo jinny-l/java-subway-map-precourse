@@ -28,6 +28,11 @@ public class InputView {
         return readLine();
     }
 
+    public String readStationToRegisterLine(String object) {
+        System.out.printf("%n%s등록할 노선의 %s 종점역 이름을 입력하세요.%n", INPUT_VIEW_PREFIX, object);
+        return readLine();
+    }
+
     private String readLine() {
         String input = scanner.nextLine().trim();
         validateHasInput(input);
