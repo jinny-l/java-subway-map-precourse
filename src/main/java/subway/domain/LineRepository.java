@@ -12,9 +12,14 @@ public class LineRepository {
         return Collections.unmodifiableList(lines);
     }
 
-    public static boolean containStation(String name) {
+    public static boolean containsStation(String name) {
         return lines.stream()
                 .anyMatch(line -> line.getStationsName().contains(name));
+    }
+
+    public static boolean containsLine(String name) {
+        return lines.stream()
+                .anyMatch(line -> line.getName().equals(name));
     }
 
     public static void addLine(Line line) {

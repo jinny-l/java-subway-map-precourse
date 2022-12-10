@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import subway.constant.ErrorMessage;
 
 public class StationRepository {
 
@@ -24,6 +25,15 @@ public class StationRepository {
 
     public static boolean deleteStation(String name) {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
+    }
+
+    public static Station findByName(String name) {
+        return stations.stream()
+                .filter(station -> station.getName().equals(name))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException(
+                        ErrorMessage.UNABLE_TO_REGISTER_STATION_TO_LINE.toString()
+                ));
     }
 
 }
