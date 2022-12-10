@@ -1,5 +1,6 @@
 package subway.view;
 
+import java.util.List;
 import java.util.stream.Stream;
 import subway.constant.command.EdgeCommand;
 import subway.constant.command.LineCommand;
@@ -16,6 +17,7 @@ public class OutputView {
     private static final String INFORMATION_PREFIX = "[INFO] ";
 
     public static void printError(String message) {
+        System.out.println();
         System.out.println(message);
     }
 
@@ -67,9 +69,22 @@ public class OutputView {
         System.out.printf("%n%s노선 목록%n", OUTPUT_VIEW_PREFIX);
         LineRepository.lines().stream()
                 .map(Line::getName)
-                .distinct()
                 .forEach(name -> System.out.println(INFORMATION_PREFIX + name));
         System.out.println();
+    }
+
+    public static void printMap() {
+        System.out.printf("%n%s지하철 노선도%n", OUTPUT_VIEW_PREFIX);
+        List<Line> lines = LineRepository.lines();
+        for (Line line : lines) {
+            List<String> stations = line.getStationsName();
+            System.out.println(INFORMATION_PREFIX + line.getName());
+            System.out.println(INFORMATION_PREFIX + "---");
+            for (String station : stations) {
+                System.out.println(INFORMATION_PREFIX + station);
+            }
+            System.out.println();
+        }
     }
 
 }
