@@ -33,6 +33,20 @@ public class InputView {
         return readLine();
     }
 
+    public String readObjectOfEdge(String object) {
+        System.out.printf("%n%s%s을 입력하세요.%n", INPUT_VIEW_PREFIX, object);
+        return readLine();
+    }
+
+    public int readIndexOfEdge() {
+        System.out.printf("%n%s순서를 입력하세요.%n", INPUT_VIEW_PREFIX);
+        try {
+            return Integer.parseInt(readLine());
+        } catch (NumberFormatException ne) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_EDGE_INDEX_TYPE.toString());
+        }
+    }
+
     private String readLine() {
         String input = scanner.nextLine().trim();
         validateHasInput(input);
