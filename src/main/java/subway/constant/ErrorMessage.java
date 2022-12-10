@@ -14,7 +14,8 @@ public enum ErrorMessage {
     INVALID_LINE_NAME("이미 존재하는 노선입니다. 다시 입력해주세요."),
     INVALID_LINE_TEXT(String.format("노선 이름은 '%s'을 포함하여 입력해주세요.", Line.lineText())),
     INVALID_LINE_NAME_LENGTH(String.format("이름은 %d글자 이상 입력해주세요.", Line.nameMinLength())),
-    UNABLE_TO_REGISTER_STATION_TO_LINE("존재하지 않는 역입니다.");
+    UNABLE_TO_REGISTER_STATION_TO_LINE("존재하지 않는 역입니다."),
+    UNABLE_TO_DELETE_LINE("존재하지 않는 노선입니다.");
 
     private static final String ERROR = "[ERROR] ";
 
