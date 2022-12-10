@@ -35,10 +35,6 @@ public enum StationCommand {
                 .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.INVALID_COMMAND.toString()));
     }
 
-    public static boolean isBack(StationCommand stationCommand) {
-        return stationCommand.equals(StationCommand.BACK);
-    }
-
     @Override
     public String toString() {
         return getCommand()
@@ -46,6 +42,5 @@ public enum StationCommand {
                 + getText()
                 + "\n";
     }
-
 
 }

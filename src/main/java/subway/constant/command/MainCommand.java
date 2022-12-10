@@ -36,10 +36,6 @@ public enum MainCommand {
                 .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.INVALID_COMMAND.toString()));
     }
 
-    public static boolean isQuit(MainCommand mainCommand) {
-        return mainCommand.equals(MainCommand.QUIT);
-    }
-
     @Override
     public String toString() {
         return getCommand()

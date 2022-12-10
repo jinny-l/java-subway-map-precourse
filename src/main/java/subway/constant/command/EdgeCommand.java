@@ -34,10 +34,6 @@ public enum EdgeCommand {
                 .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.INVALID_COMMAND.toString()));
     }
 
-    public static boolean isBack(EdgeCommand edgeCommand) {
-        return edgeCommand.equals(EdgeCommand.BACK);
-    }
-
     @Override
     public String toString() {
         return getCommand()

@@ -35,10 +35,6 @@ public enum LineCommand {
                 .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.INVALID_COMMAND.toString()));
     }
 
-    public static boolean isBack(LineCommand lineCommand) {
-        return lineCommand.equals(LineCommand.BACK);
-    }
-
     @Override
     public String toString() {
         return getCommand()
