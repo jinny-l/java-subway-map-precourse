@@ -21,14 +21,6 @@ public enum MainCommand {
         this.command = command;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public String getCommand() {
-        return command;
-    }
-
     public static MainCommand from(String input) {
         return Arrays.stream(MainCommand.values())
                 .filter(mainCommand -> mainCommand.command.equals(input))
@@ -38,9 +30,9 @@ public enum MainCommand {
 
     @Override
     public String toString() {
-        return getCommand()
+        return command
                 + FIELD_DELIMITER
-                + getText()
+                + text
                 + "\n";
     }
 

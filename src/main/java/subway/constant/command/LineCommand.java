@@ -20,14 +20,6 @@ public enum LineCommand {
         this.command = command;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public String getCommand() {
-        return command;
-    }
-
     public static LineCommand from(String input) {
         return Stream.of(LineCommand.values())
                 .filter(lineCommand -> lineCommand.command.equals(input))
@@ -37,9 +29,9 @@ public enum LineCommand {
 
     @Override
     public String toString() {
-        return getCommand()
+        return command
                 + FIELD_DELIMITER
-                + getText()
+                + text
                 + "\n";
     }
 

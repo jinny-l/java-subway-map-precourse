@@ -20,14 +20,6 @@ public enum StationCommand {
         this.command = command;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public String getCommand() {
-        return command;
-    }
-
     public static StationCommand from(String input) {
         return Stream.of(StationCommand.values())
                 .filter(stationCommand -> stationCommand.command.equals(input))
@@ -37,9 +29,9 @@ public enum StationCommand {
 
     @Override
     public String toString() {
-        return getCommand()
+        return command
                 + FIELD_DELIMITER
-                + getText()
+                + text
                 + "\n";
     }
 

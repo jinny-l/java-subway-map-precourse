@@ -19,14 +19,6 @@ public enum EdgeCommand {
         this.command = command;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public String getCommand() {
-        return command;
-    }
-
     public static EdgeCommand from(String input) {
         return Stream.of(EdgeCommand.values())
                 .filter(edgeCommand -> edgeCommand.command.equals(input))
@@ -36,9 +28,9 @@ public enum EdgeCommand {
 
     @Override
     public String toString() {
-        return getCommand()
+        return command
                 + FIELD_DELIMITER
-                + getText()
+                + text
                 + "\n";
     }
 
