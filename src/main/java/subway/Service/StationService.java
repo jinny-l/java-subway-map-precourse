@@ -13,7 +13,7 @@ public class StationService {
     }
 
     public void deleteStation(String input) {
-        if (LineRepository.containStation(input)) {
+        if (LineRepository.containsStation(input)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_STATION_DELETION.toString());
         }
         StationRepository.deleteStation(input);
