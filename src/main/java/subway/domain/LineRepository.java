@@ -26,10 +26,10 @@ public class LineRepository {
     }
 
     public static void deleteLineByName(String name) {
-        lines.remove(findByName(name));
+        lines.remove(findLineOf(name));
     }
 
-    public static Line findByName(String name) {
+    public static Line findLineOf(String name) {
         return lines.stream()
                 .filter(line -> line.getName().equals(name))
                 .findAny()

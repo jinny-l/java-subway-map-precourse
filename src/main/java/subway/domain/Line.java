@@ -35,6 +35,23 @@ public class Line {
         stations.add(StationRepository.findByName(name));
     }
 
+    public void addStation(int index, Station station) {
+        // TODO name, index 일치하는지 검증 / 이미 존재하는 역인지 검증
+        stations.add(index, station);
+    }
+
+    public void deleteStation(Station station) {
+        //TODO: 역이 2개 이하일 때 역을 제거하지 못하는 로직 구현 필요
+        stations.remove(station);
+    }
+
+    public Station findStationOf(String name) {
+        return stations.stream()
+                .filter(station -> station.getName().equals(name))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException());
+    }
+
     public String getName() {
         return name;
     }

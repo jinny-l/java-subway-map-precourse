@@ -5,10 +5,15 @@ import subway.domain.LineRepository;
 
 public class LineService {
 
-    public void registerLine(String name, String firstStation, String lastStation) {
-        Line line = new Line(name);
-        line.addStation(firstStation);
-        line.addStation(lastStation);
+    public Line registerLine(String name) {
+        return new Line(name);
+    }
+
+    public void registerStation(Line line, String station) {
+        line.addStation(station);
+    }
+
+    public void addLineToRepository(Line line) {
         LineRepository.addLine(line);
     }
 
