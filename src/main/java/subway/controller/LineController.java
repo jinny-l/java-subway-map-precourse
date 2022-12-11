@@ -54,6 +54,7 @@ public class LineController {
         Line line = lineService.registerLine(inputView.readObjectToRegister(LINE));
         lineService.registerStation(line, inputView.readStationToRegisterLine("상행"));
         lineService.registerStation(line, inputView.readStationToRegisterLine("하행"));
+        lineService.addLineToRepository(line);
         OutputView.printRegisteredInfo(LINE);
     }
 
