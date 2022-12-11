@@ -1,6 +1,7 @@
 package subway.view;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import subway.constant.command.EdgeCommand;
 import subway.constant.command.LineCommand;
@@ -15,17 +16,19 @@ public class OutputView {
 
     private static final String OUTPUT_VIEW_PREFIX = "## ";
     private static final String INFORMATION_PREFIX = "[INFO] ";
+    private static final String NEW_LINE = "\n";
 
     public static void printError(String message) {
         System.out.println();
         System.out.println(message);
     }
 
+    // TODO: 출력 로직이 printStationCommand랑 비교했을 때 어떤 것이 더 좋을지?
     public static void printMainCommand() {
-        StringBuilder stringBuilder = new StringBuilder();
-        Stream.of(MainCommand.values())
-                .forEach(mainCommand -> stringBuilder.append(mainCommand.toString()));
-        System.out.printf("%s메인 화면%n%s%n", OUTPUT_VIEW_PREFIX, stringBuilder);
+        List<String> commandView = Stream.of(MainCommand.values())
+                .map(MainCommand::toString)
+                .collect(Collectors.toList());
+        System.out.printf("%s메인 화면%n%s%n%n", OUTPUT_VIEW_PREFIX, String.join(NEW_LINE, commandView));
     }
 
     public static void printStationCommand() {
